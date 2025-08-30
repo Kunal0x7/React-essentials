@@ -1,10 +1,12 @@
-
 import { CORE_CONCEPTS } from './data';
 import Header from './Components/Header/Header.jsx';
 import CoreConcepts from './Components/CoreComponents.jsx';
 import TabButtons from './Components/TabButtons';
 
 function App() {
+  function handleSelect(children){
+    alert("Hello World -- Selected");
+  } 
   return (
     <div>
       <Header />
@@ -24,10 +26,10 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButtons>Components</TabButtons>
-            <TabButtons>JSX</TabButtons>
-            <TabButtons>Props</TabButtons>
-            <TabButtons>State</TabButtons>
+            <TabButtons onSelect={handleSelect}>Components</TabButtons>
+            <TabButtons onSelect={handleSelect}>JSX</TabButtons>
+            <TabButtons onSelect={handleSelect}>Props</TabButtons>
+            <TabButtons onSelect={handleSelect}>State</TabButtons>
           </menu>
         </section>
         
