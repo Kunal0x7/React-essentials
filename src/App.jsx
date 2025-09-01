@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import { CORE_CONCEPTS } from './data';
+import { EXAMPLES } from './data';
 import Header from './Components/Header/Header.jsx';
 import CoreConcepts from './Components/CoreComponents.jsx';
 import TabButtons from './Components/TabButtons';
 
 function App() {
-  function handleSelect(children){
-    alert("Hello World -- Selected");
+  const [selectedTopic, setSelectedTopic] = useState('components');
+  //let tabContent="Please Click a Button";
+  function handleSelect(selectedButton){
+    setSelectedTopic(selectedButton);
+    //console.log(selectedTopic);
+    
   } 
   return (
     <div>
@@ -26,11 +32,20 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButtons onSelect={handleSelect}>Components</TabButtons>
-            <TabButtons onSelect={handleSelect}>JSX</TabButtons>
-            <TabButtons onSelect={handleSelect}>Props</TabButtons>
-            <TabButtons onSelect={handleSelect}>State</TabButtons>
+            <TabButtons onSelect={()=>handleSelect('components')}>Components</TabButtons>
+            <TabButtons onSelect={()=>handleSelect('jsx')}>JSX</TabButtons>
+            <TabButtons onSelect={()=>handleSelect('props')}>Props</TabButtons>
+            <TabButtons onSelect={()=>handleSelect('state')}>State</TabButtons>
           </menu>
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
         </section>
         
       </main>
