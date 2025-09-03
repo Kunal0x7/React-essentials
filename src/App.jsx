@@ -26,7 +26,7 @@ function App() {
           <CoreConcepts {...CORE_CONCEPTS[1]} />
           <CoreConcepts {...CORE_CONCEPTS[2]} />
           <CoreConcepts {...CORE_CONCEPTS[3]} /> */}
-          {CoreConcepts.map((concept)=>(
+          {CORE_CONCEPTS.map((concept)=>(
             <CoreConcepts key={concept.title} {...concept} />
           ))}
         </ul>
